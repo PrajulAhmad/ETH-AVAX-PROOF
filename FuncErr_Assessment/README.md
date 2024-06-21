@@ -30,5 +30,5 @@ Prajul Ahmad
 
 ## License
 
-None
+MIT
 
