@@ -36,7 +36,7 @@ This Solidity smart contract showcases how to use `require()`, `assert()`, and `
 
 #### `setValue`
 
-- **Purpose**: Sets the `value` to a given number, `_value`, provided it is non-negative and does not exceed 100.
+- **Purpose**: Sets the `value` to a given number, `_value`, provided it is non-negative and does not exceed 500.
 - **Access**: Restricted to the owner.
 - **Parameters**: `uint _value` - The value to set.
 - **Checks**:
