@@ -1,4 +1,4 @@
-# ErrorHandlingExample Smart Contract
+# Functions and Errors Smart Contract
 
 This Solidity smart contract showcases how to use `require()`, `assert()`, and `revert()` for effective error handling. These mechanisms help ensure that the contract operates as intended by checking conditions, validating inputs, and managing exceptional cases.
 
