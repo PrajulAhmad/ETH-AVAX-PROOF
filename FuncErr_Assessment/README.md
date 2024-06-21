@@ -1,62 +1,59 @@
 # ErrorHandlingExample Smart Contract
 
-This Solidity smart contract demonstrates the usage of the `require()`, `assert()`, and `revert()` statements for error handling. These statements help ensure that the contract operates correctly by validating conditions, checking for internal errors, and handling exceptional cases.
+This Solidity smart contract showcases how to use `require()`, `assert()`, and `revert()` for effective error handling. These mechanisms help ensure that the contract operates as intended by checking conditions, validating inputs, and managing exceptional cases.
 
 ## Features
 
-- **Access Control**: Only the owner can perform certain actions.
-- **Input Validation**: Ensures that provided values meet specific conditions.
-- **Error Handling**: Demonstrates the use of `require()`, `assert()`, and `revert()` for proper error management.
+- **Owner-Only Functions**: Certain functions can only be called by the contract owner.
+- **Input Checks**: Ensures that provided values are within acceptable ranges.
+- **Error Handling**: Demonstrates practical use of `require()`, `assert()`, and `revert()` statements.
 
-## Contract Details
+## Contract Overview
 
 ### State Variables
 
-- `uint public value`: Stores a numeric value.
-- `address public owner`: Stores the address of the contract owner.
+- `uint public value`: Holds a numeric value.
+- `address public owner`: Holds the address of the contract owner.
 
 ### Modifiers
 
-- `onlyOwner`: Ensures that the function can only be called by the contract owner.
+- `onlyOwner`: Restricts function access to only the contract owner.
 
 ### Functions
 
-- `constructor()`: Initializes the contract by setting the deployer as the owner.
-- `setValue(uint _value)`: Sets the value if it meets certain conditions.
-- `resetValue()`: Resets the value to zero if it's not already zero.
+- `constructor()`: Sets the deployer as the initial contract owner.
+- `setValue(uint _value)`: Updates the `value` if certain conditions are met.
+- `resetValue()`: Resets `value` to zero if it's not already zero.
 
 ## Usage
 
 ### Deployment
 
-1. Deploy the contract using your preferred Ethereum development environment (e.g., Remix, Truffle).
-2. The deployer address will be set as the initial owner.
+1. Deploy the contract using an Ethereum development tool like Remix or Truffle.
+2. The address that deploys the contract will be set as the owner.
 
-### Functions
+### Function Details
 
 #### `setValue`
 
-- **Description**: Sets the `value` if the provided `_value` is non-negative and less than or equal to 100.
-- **Modifiers**: `onlyOwner`
-- **Parameters**: `uint _value` - The value to be set.
-- **Error Handling**:
+- **Purpose**: Sets the `value` to a given number, `_value`, provided it is non-negative and does not exceed 100.
+- **Access**: Restricted to the owner.
+- **Parameters**: `uint _value` - The value to set.
+- **Checks**:
   - Uses `require()` to ensure `_value` is non-negative.
-  - Uses `assert()` to check that `_value` is within the expected range (0 to 100).
+  - Uses `assert()` to ensure `_value` does not exceed 100.
 
 #### `resetValue`
 
-- **Description**: Resets the `value` to zero if it's not already zero.
-- **Modifiers**: `onlyOwner`
-- **Error Handling**:
-  - Uses `revert()` to stop execution and roll back state changes if `value` is already zero.
+- **Purpose**: Resets `value` to zero, but only if it isn't already zero.
+- **Access**: Restricted to the owner.
+- **Checks**:
+  - Uses `revert()` to stop execution and revert any changes if `value` is already zero.
 
 ### Examples
 
 1. **Setting a Value**:
    - Call `setValue` with a positive integer (e.g., `50`). The function will set `value` to `50` if the caller is the owner and `_value` is within the acceptable range.
-
-   ```solidity
-   contractInstance.setValue(50);
 
 ## Authors
 
