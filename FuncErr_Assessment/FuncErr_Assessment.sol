@@ -19,7 +19,7 @@ contract FuncErr_Assessment
     function setValue(uint _value) public realOwner
     {
         require(_value >= 0, "Value must not be negative");
-        assert(_value <= 500);  //value should be under 500
+        assert(_value <= 500);  
         value = _value;
     }
 
