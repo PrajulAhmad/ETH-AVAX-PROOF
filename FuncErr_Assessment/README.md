@@ -1,26 +1,62 @@
-# Token-Creation
-In this project I am creating my own token named as BREWIUM.
+# ErrorHandlingExample Smart Contract
 
-This Solidity program demonstrates function and mapping functionality of solidity programming language. The purpose of this program is to mint and burn the token. 
+This Solidity smart contract demonstrates the usage of the `require()`, `assert()`, and `revert()` statements for error handling. These statements help ensure that the contract operates correctly by validating conditions, checking for internal errors, and handling exceptional cases.
 
-## Description
+## Features
 
-This program is a simple contract written in Solidity used to mint and burn the BREWIUM token. This program serves as a simple and straightforward way to mint and burn the token with simple Solidity programming language syntax.
+- **Access Control**: Only the owner can perform certain actions.
+- **Input Validation**: Ensures that provided values meet specific conditions.
+- **Error Handling**: Demonstrates the use of `require()`, `assert()`, and `revert()` for proper error management.
 
-### Executing program
+## Contract Details
 
-To run this program, we can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
+### State Variables
 
-Once you are on the Remix website, create a new file by clicking on the "+" icon in the left-hand sidebar. Save the file with a .sol extension (e.g., TokenCreation.sol). Copy and paste the code into the file:
+- `uint public value`: Stores a numeric value.
+- `address public owner`: Stores the address of the contract owner.
 
-To compile the code, click on the "Solidity Compiler" tab in the left-hand sidebar. Make sure the "Compiler" option is set to "0.8.26" (or another compatible version), and then click on the "Compile TokenCreation.sol" button.
+### Modifiers
 
-Once the code is compiled, you can deploy the contract by clicking on the "Deploy & Run Transactions" tab in the left-hand sidebar. Select the "TokenCreation" contract from the dropdown menu, and then click on the "Deploy" button.
+- `onlyOwner`: Ensures that the function can only be called by the contract owner.
 
-Once the contract is deployed, you can interact with it under Deployed/Unpinned Contracts section. Select the contract and click on tokenAbb, tokenName and totalSupply to see the token Abbrebiation, Name and Total supply of the token.
+### Functions
 
-Under mint section paste the account address and give the value for number of token. After that click on transact, and click on totalSupply to see number of tokens minted.
-Under burn section give the address and value for burning given number of tokens.After that click on transact, and click on totalSupply to see number of tokens burned.
+- `constructor()`: Initializes the contract by setting the deployer as the owner.
+- `setValue(uint _value)`: Sets the value if it meets certain conditions.
+- `resetValue()`: Resets the value to zero if it's not already zero.
+
+## Usage
+
+### Deployment
+
+1. Deploy the contract using your preferred Ethereum development environment (e.g., Remix, Truffle).
+2. The deployer address will be set as the initial owner.
+
+### Functions
+
+#### `setValue`
+
+- **Description**: Sets the `value` if the provided `_value` is non-negative and less than or equal to 100.
+- **Modifiers**: `onlyOwner`
+- **Parameters**: `uint _value` - The value to be set.
+- **Error Handling**:
+  - Uses `require()` to ensure `_value` is non-negative.
+  - Uses `assert()` to check that `_value` is within the expected range (0 to 100).
+
+#### `resetValue`
+
+- **Description**: Resets the `value` to zero if it's not already zero.
+- **Modifiers**: `onlyOwner`
+- **Error Handling**:
+  - Uses `revert()` to stop execution and roll back state changes if `value` is already zero.
+
+### Examples
+
+1. **Setting a Value**:
+   - Call `setValue` with a positive integer (e.g., `50`). The function will set `value` to `50` if the caller is the owner and `_value` is within the acceptable range.
+
+   ```solidity
+   contractInstance.setValue(50);
 
 ## Authors
 
@@ -30,5 +66,4 @@ Prajul Ahmad
 
 ## License
 
-MIT
-
+None
