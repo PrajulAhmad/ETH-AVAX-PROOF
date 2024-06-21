@@ -29,7 +29,7 @@ This Solidity smart contract showcases how to use `require()`, `assert()`, and `
 
 ### Deployment
 
-1. Deploy the contract using an Ethereum development tool like Remix or Truffle.
+1. Deploy the contract using an Ethereum development tool Remix
 2. The address that deploys the contract will be set as the owner.
 
 ### Function Details
@@ -41,7 +41,7 @@ This Solidity smart contract showcases how to use `require()`, `assert()`, and `
 - **Parameters**: `uint _value` - The value to set.
 - **Checks**:
   - Uses `require()` to ensure `_value` is non-negative.
-  - Uses `assert()` to ensure `_value` does not exceed 100.
+  - Uses `assert()` to ensure `_value` does not exceed 500.
 
 #### `resetValue`
 
